@@ -1,0 +1,20 @@
+h3 {
+  margin: 0;
+}
+
+.member-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px;
+  transition: all .1s ease-in;
+}
+
+.member-card:hover {
+  cursor: pointer;
+  box-shadow: 0 0 15px  #42b983;
+}
+
+.editMemberButton {
+  margin-left: 10px;
+}

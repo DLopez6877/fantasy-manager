@@ -1,0 +1,9 @@
+<div id="News">
+   <h1>NEWS</h1>
+   <div *ngFor="let article of newsArticles" class="article">
+      <a href="{{article.url}}">
+        <img src="{{article.image}}" alt="news article">
+        <div class="title">{{ article.title }}</div>
+      </a>
+   </div>
+</div>

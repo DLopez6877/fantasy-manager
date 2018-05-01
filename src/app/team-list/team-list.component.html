@@ -1,0 +1,13 @@
+<h2>Team List</h2>
+
+<div *ngFor="let member of members | async" class="panel panel-default">
+  <div class="panel-body" (click)="goToDetailPage(member)" class="member-card">
+    <h3>
+      <span>{{member.teamName}}</span>
+      <em>{{member.name}}</em>
+    </h3>
+    <div class="editMemberButton" (click)="$event.stopPropagation()">
+      <app-edit-member [selectedMember]="member"></app-edit-member>
+    </div>
+  </div>
+</div>

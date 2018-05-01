@@ -1,0 +1,29 @@
+<div class="form-simulation">
+  <h3>Add a new league member:</h3>
+  <div class="form-group">
+    <label>Member's name:</label>
+    <input #newMemberName class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>Member's team name:</label>
+    <input #newMemberTeamName class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>Member's username:</label>
+    <input #newMemberUsername class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>Member's password:</label>
+    <input type="password" #newMemberPassword class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>Admin: <input type="checkbox" [checked]="newMemberIsAdmin" (change)="newMemberIsAdmin = !newMemberIsAdmin"></label>
+    <p><i>Members with admin status can add/edit/delete members and their teams.</i></p>
+  </div>
+
+  <button (click)="submitForm(newMemberName.value, newMemberTeamName.value, newMemberUsername.value, newMemberPassword.value, newMemberIsAdmin); newMemberName.value = ''; newMemberTeamName.value = ''; newMemberUsername.value = ''; newMemberPassword.value = ''; newMemberIsAdmin = false;" class="btn btn-default">Add</button>
+</div>

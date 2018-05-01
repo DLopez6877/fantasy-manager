@@ -1,0 +1,44 @@
+.article {
+  position: relative;
+  margin-bottom: 20px;
+}
+a {
+  margin: 0;
+  transition: color .2s;
+}
+a:hover {
+  color: skyblue;
+}
+img {
+  max-width: 100%;
+}
+.title {
+  position: absolute;
+  padding: 0 10px;
+  width: 100%;
+  font-size: 4vw;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  background-color: rgba(30, 30, 30, .8);
+}
+
+@media screen and (min-width: 1300px) {
+  .article {
+    display: inline-block;
+    width: calc(50% - 10px);
+  }
+  div.title {
+    font-size: 2.5vw;
+  }
+  .article:nth-child(odd) {
+    float: right;
+  }
+}
+
+@media screen and (max-width: 615px) {
+  div.title {
+    font-size: 26px;
+  }
+}

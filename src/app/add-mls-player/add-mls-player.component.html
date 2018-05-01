@@ -1,0 +1,19 @@
+<div class="form-simulation">
+  <h3>Add a player:</h3>
+  <!-- <div class="form-group">
+    <label for="typeahead-http">Search for a wiki page:</label>
+    <input
+      id="typeahead-http"
+      type="text"
+      class="form-control"
+      [class.is-invalid]="searchFailed"
+      [(ngModel)]="model"
+      [ngbTypeahead]="search"
+      placeholder="Wikipedia search"
+    />
+    <span *ngIf="searching">searching...</span>
+    <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
+  </div> -->
+
+  <button (click)="submitForm(newMemberName.value); newMemberName.value = '';" class="btn btn-default">Add</button>
+</div>
