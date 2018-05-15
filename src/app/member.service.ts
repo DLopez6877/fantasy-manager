@@ -5,11 +5,13 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 @Injectable()
 export class MemberService {
   members: FirebaseListObservable<any[]>;
+  invalidRosterWarning: string;
 
   constructor(
     private database: AngularFireDatabase
   ) {
   this.members = database.list('members');
+  this.invalidRosterWarning = "";
  }
 
   getMembers() {
@@ -30,11 +32,59 @@ export class MemberService {
                                 teamName: localUpdatedMember.teamName,
                                 username: localUpdatedMember.username,
                                 password: localUpdatedMember.password,
+                                players: localUpdatedMember.players,
                                 isAdmin: localUpdatedMember.isAdmin});
   }
 
   deleteMember(localMemberToDelete){
     var memberEntryInFirebase = this.getMemberById(localMemberToDelete.$key);
     memberEntryInFirebase.remove();
+  }
+
+  validateRoster(member: Member) {
+    this.invalidRosterWarning = "";
+    let forwards = 0;
+    let midfielders = 0;
+    let defenders = 0;
+    let goalkeepers = 0;
+    let playerIds = [];
+    
+    member.players.forEach(player => {
+      if (player.positions === "F") {
+        forwards++;
+      }
+      if (player.positions === "M") {
+        midfielders++;
+      }
+      if (player.positions === "D") {
+        defenders++;
+      }
+      if (player.positions === "GK") {
+        goalkeepers++;
+      }
+      
+      playerIds.push(player.id);
+      
+    });
+    
+    if (forwards != 4) {
+      this.invalidRosterWarning += "Incorrect amount of forwards. ";
+    }
+    if (midfielders != 6) {
+      this.invalidRosterWarning += "Incorrect amount of midfielders. ";
+    }
+    if (defenders != 6) {
+      this.invalidRosterWarning += "Incorrect amount of defenders. ";
+    }
+    if (goalkeepers != 2) {
+      this.invalidRosterWarning += "Incorrect amount of goalkeepers. ";
+    }
+    if (hasDuplicates(playerIds)) {
+      this.invalidRosterWarning += "Duplicate player found.";
+    };
+
+    function hasDuplicates(array) {
+      return (new Set(array)).size !== array.length;
+    }
   }
 }

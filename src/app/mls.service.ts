@@ -32,7 +32,7 @@ export class MlsService {
   private getMlsPlayers(): void {
     this.http.get(this._baseUrl + 'players.json?_=1521353744779').subscribe(res => {
       let players = res.json();
-      players = players.map(player => this.formatFullNames);
+      players = players.map(player => this.formatFields(player));
       this.players = players;
     });
   }
@@ -61,8 +61,23 @@ export class MlsService {
     });
   }
   
-  private formatFullNames(player): string {
-    return `${player.first_name} ${player.last_name}`;
+  private formatFields(player): string {
+    player.full_name = `${player.first_name} ${player.last_name}`;
+    player.squad_id = MlsTeamTranslator[player.squad_id];
+    let playerPos = player.positions[0];
+    if (playerPos === 4) {
+      player.positions = "F";
+    }
+    if (playerPos === 3) {
+      player.positions = "M";
+    }
+    if (playerPos === 2) {
+      player.positions = "D";
+    }
+    if (playerPos === 1) {
+      player.positions = "GK";
+    }
+    return player;
   }
 
 }

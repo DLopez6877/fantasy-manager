@@ -11,7 +11,7 @@ export class MlsPlayer {
       public cost: number,
       public status: string,
       public stats: Stats,
-      public positions: number[],
+      public positions: string,
       public is_bye: number,
       public locked: number
   ) { }

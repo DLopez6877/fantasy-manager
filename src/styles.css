@@ -1,8 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
-.container {
-  padding-bottom: 100px;
-}
+/* Angular Material theme */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
+/* You can add global styles to this file, and also import other style files */
 *:focus {
   outline: none;
 }

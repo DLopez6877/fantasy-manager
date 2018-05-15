@@ -1,10 +1,30 @@
 <h3>
-  <span>{{(memberToDisplay | async)?.teamName}}</span>
-  <em>{{(memberToDisplay | async)?.name}}</em>
+  <span>{{(memberToDisplay)?.teamName}}</span>
+  <em>{{(memberToDisplay)?.name}}</em>
 </h3>
 
 <button type="button" class="btn btn-default" (click)="addPlayerFormIsVisible = !addPlayerFormIsVisible">Add Player</button>
 
 <div *ngIf="addPlayerFormIsVisible">
-  <app-add-mls-player></app-add-mls-player>
+  <app-add-mls-player [currentMember]="memberToDisplay"></app-add-mls-player>
 </div>
+
+<h4 class="invalidRosterWarning">{{memberService.invalidRosterWarning}}</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Position</th>
+      <th scope="col">Squad</th>
+      <th scope="col">Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let player of memberToDisplay?.players">
+      <th scope="row"><span *ngIf="player.status === 'injured'">🚑 </span>{{player.full_name}}</th>
+      <td>{{player.positions}}</td>
+      <td>{{player.squad_id.team_short}}</td>
+      <td>{{ player.stats.scores[mlsService.currentRound.id] ? player.stats.scores[mlsService.currentRound.id] : 0 }}</td>
+    </tr>
+  </tbody>
+</table>
