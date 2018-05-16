@@ -2,3 +2,18 @@
     color: red;
     text-align: center;
 }
+
+.deletePlayer {
+    color: red;
+    cursor: pointer;
+    float: right;
+    padding: 0 5px;
+}
+
+td, thead th:not(:first-child) {
+    text-align: center;
+}
+
+td.score {
+    text-align: right;
+}

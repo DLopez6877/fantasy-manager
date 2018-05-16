@@ -20,6 +20,7 @@ export class MemberDetailComponent implements OnInit {
   memberToDisplay: Member;
   currentRound: number;
   pendingUpdate: boolean;
+  score: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,7 +33,6 @@ export class MemberDetailComponent implements OnInit {
     this.route.params.forEach(urlParameters => {
       this.memberId = urlParameters['id'];
     });
-
     
     this.memberService.getMemberById(this.memberId).subscribe(res => {
       if (res.players) {
@@ -61,5 +61,25 @@ export class MemberDetailComponent implements OnInit {
     return output;
   }
 
-  
+  deletePlayer(player: MlsPlayer) {
+    if(confirm(`Are you sure you want to remove ${player.full_name} from your squad?`)) {
+      this.memberToDisplay.players = this.memberToDisplay.players.filter(function( obj ) {
+        return obj.id !== player.id;
+      });
+      this.memberService.updateMember(this.memberToDisplay);
+      this.memberService.validateRoster(this.memberToDisplay);
+    };
+  }
+
+  togglePlayerSelection(e, player: MlsPlayer){
+    if (!player.stats.scores[this.mlsService.currentRound.id]) {
+      player.stats.scores[this.mlsService.currentRound.id] = 0;
+    }
+    if (e.target.checked){
+      this.score += player.stats.scores[this.mlsService.currentRound.id];
+    } else {
+      this.score -= player.stats.scores[this.mlsService.currentRound.id];
+    }
+  }
+
 }

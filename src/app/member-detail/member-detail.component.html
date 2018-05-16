@@ -16,15 +16,21 @@
       <th scope="col">Name</th>
       <th scope="col">Position</th>
       <th scope="col">Squad</th>
+      <th scope="col">Select</th>
       <th scope="col">Score</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let player of memberToDisplay?.players">
-      <th scope="row"><span *ngIf="player.status === 'injured'">🚑 </span>{{player.full_name}}</th>
+      <th scope="row"><span *ngIf="player.status === 'injured'">🚑 </span>{{player.full_name}}<span (click)="deletePlayer(player)" class="deletePlayer">Ⓧ</span></th>
       <td>{{player.positions}}</td>
       <td>{{player.squad_id.team_short}}</td>
+      <td><input type="checkbox" (change)="togglePlayerSelection($event, player)"></td>
       <td>{{ player.stats.scores[mlsService.currentRound.id] ? player.stats.scores[mlsService.currentRound.id] : 0 }}</td>
+    </tr>
+    <tr>
+      <td colspan="4" class="score">Total Score:</td>
+      <td>{{score}}</td>
     </tr>
   </tbody>
 </table>
