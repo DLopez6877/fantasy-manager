@@ -41,7 +41,7 @@ export class MemberService {
     memberEntryInFirebase.remove();
   }
 
-  validateRoster(member: Member) {
+  validateAndSortRoster(member: Member) {
     this.invalidRosterWarning = "";
     let forwards = 0;
     let midfielders = 0;
@@ -67,6 +67,12 @@ export class MemberService {
       
     });
     
+    member.players.sort(function(a, b){
+      if(a.positions < b.positions) return -1;
+      if(a.positions > b.positions) return 1;
+      return 0;
+    });
+    
     if (forwards != 4) {
       this.invalidRosterWarning += "Incorrect amount of forwards. ";
     }
@@ -87,4 +93,5 @@ export class MemberService {
       return (new Set(array)).size !== array.length;
     }
   }
+  
 }

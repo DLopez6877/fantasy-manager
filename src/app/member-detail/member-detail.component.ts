@@ -41,7 +41,7 @@ export class MemberDetailComponent implements OnInit {
           this.memberService.updateMember(res);
         }
         this.memberToDisplay = res;
-        this.memberService.validateRoster(this.memberToDisplay);
+        this.memberService.validateAndSortRoster(this.memberToDisplay);
       } else {
         this.memberToDisplay = res;
       }
@@ -67,7 +67,7 @@ export class MemberDetailComponent implements OnInit {
         return obj.id !== player.id;
       });
       this.memberService.updateMember(this.memberToDisplay);
-      this.memberService.validateRoster(this.memberToDisplay);
+      this.memberService.validateAndSortRoster(this.memberToDisplay);
     };
   }
 

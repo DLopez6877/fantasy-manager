@@ -17,4 +17,5 @@ h3 {
 
 .editMemberButton {
   margin-left: 10px;
+  display: none;
 }

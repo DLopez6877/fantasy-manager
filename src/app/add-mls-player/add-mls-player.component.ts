@@ -56,7 +56,7 @@ export class AddMlsPlayerComponent implements OnInit {
     };
     this.currentMember.players.push(this.selectedPlayer);
     this.memberService.updateMember(this.currentMember);
-    this.memberService.validateRoster(this.currentMember);
+    this.memberService.validateAndSortRoster(this.currentMember);
   }
 
   updateDatabase() {
