@@ -5,9 +5,10 @@
 a {
   margin: 0;
   transition: color .2s;
+  color: #42b983;
 }
 a:hover {
-  color: skyblue;
+  color: rebeccapurple;
 }
 img {
   max-width: 100%;
@@ -15,13 +16,17 @@ img {
 .title {
   position: absolute;
   padding: 0 10px;
-  width: 100%;
+  width: 48%;
+  height: 100%;
   font-size: 4vw;
   z-index: 1;
   bottom: 0;
   left: 0;
-  text-align: left;
-  background-color: rgba(30, 30, 30, .8);
+  text-align: center;
+  background-color: #272727;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media screen and (min-width: 1300px) {
@@ -39,6 +44,6 @@ img {
 
 @media screen and (max-width: 615px) {
   div.title {
-    font-size: 26px;
+    font-size: 17px;
   }
 }

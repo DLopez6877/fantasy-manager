@@ -17,3 +17,30 @@ td, thead th:not(:first-child) {
 td.score {
     text-align: right;
 }
+
+.roundIndicator > th {
+    text-align: right;
+    border: none; 
+}
+
+.roundDisplay {
+    text-align: center;
+    width: 52px;
+    padding-left: 14px;
+    border-color: #42b983;
+}
+
+.roundControl {
+    transition: all .2s ease-in;
+    letter-spacing: -8px;
+    padding: 10px 12px;
+}
+
+.roundControl:hover {
+    cursor: pointer;
+    color: #42b983;
+}
+
+.first-row > th {
+    border-top: 0;
+}

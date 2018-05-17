@@ -10,10 +10,18 @@
 </div>
 
 <h4 class="invalidRosterWarning">{{memberService.invalidRosterWarning}}</h4>
+
 <table class="table">
   <thead>
-    <tr>
+    <tr class="roundIndicator">
+      <th colspan="5"></th>
+      <th>
+        <input class="roundDisplay" [(ngModel)]="roundToDisplay" type="number" min="0" max="34"/>
+      </th>
+    </tr>
+    <tr class="first-row">
       <th scope="col">Name</th>
+      <th></th>
       <th scope="col">Position</th>
       <th scope="col">Squad</th>
       <th scope="col">Select</th>
@@ -22,14 +30,15 @@
   </thead>
   <tbody>
     <tr *ngFor="let player of memberToDisplay?.players">
-      <th scope="row"><span *ngIf="player.status === 'injured'">🚑 </span>{{player.full_name}}<span (click)="deletePlayer(player)" class="deletePlayer">Ⓧ</span></th>
+      <th scope="row"><span *ngIf="player.status === 'injured'">🚑 </span>{{player.full_name}}</th>
+      <td><span (click)="deletePlayer(player)" class="deletePlayer">Ⓧ</span></td>
       <td>{{player.positions}}</td>
       <td>{{player.squad_id.team_short}}</td>
       <td><input type="checkbox" (change)="togglePlayerSelection($event, player)"></td>
-      <td>{{ player.stats.scores[mlsService.currentRound.id] ? player.stats.scores[mlsService.currentRound.id] : 0 }}</td>
+      <td>{{ player.stats.scores[roundToDisplay] ? player.stats.scores[roundToDisplay] : 0 }}</td>
     </tr>
     <tr>
-      <td colspan="4" class="score">Total Score:</td>
+      <td colspan="5" class="score">Total Score:</td>
       <td>{{score}}</td>
     </tr>
   </tbody>

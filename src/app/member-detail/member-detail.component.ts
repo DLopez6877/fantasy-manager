@@ -18,7 +18,7 @@ import { MlsService } from '../mls.service';
 export class MemberDetailComponent implements OnInit {
   memberId: string;
   memberToDisplay: Member;
-  currentRound: number;
+  roundToDisplay: number;
   pendingUpdate: boolean;
   score: number = 0;
 
@@ -46,6 +46,9 @@ export class MemberDetailComponent implements OnInit {
         this.memberToDisplay = res;
       }
     });
+    setTimeout(()=> {
+      this.roundToDisplay = this.mlsService.currentRound.id;
+    }, 500);
   }
 
   updatePlayerStats(memberPlayer: MlsPlayer) {
@@ -72,13 +75,13 @@ export class MemberDetailComponent implements OnInit {
   }
 
   togglePlayerSelection(e, player: MlsPlayer){
-    if (!player.stats.scores[this.mlsService.currentRound.id]) {
-      player.stats.scores[this.mlsService.currentRound.id] = 0;
+    if (!player.stats.scores[this.roundToDisplay]) {
+      player.stats.scores[this.roundToDisplay] = 0;
     }
     if (e.target.checked){
-      this.score += player.stats.scores[this.mlsService.currentRound.id];
+      this.score += player.stats.scores[this.roundToDisplay];
     } else {
-      this.score -= player.stats.scores[this.mlsService.currentRound.id];
+      this.score -= player.stats.scores[this.roundToDisplay];
     }
   }
 

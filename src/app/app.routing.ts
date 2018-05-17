@@ -6,6 +6,7 @@ import { MemberDetailComponent }   from './member-detail/member-detail.component
 import { AdminComponent }   from './admin/admin.component';
 import { MatchesComponent } from './matches/matches.component';
 import { NewsComponent } from "./news/news.component";
+import { ErrorComponent } from "./error/error.component";
 
 const appRoutes: Routes = [
   {
@@ -31,6 +32,13 @@ const appRoutes: Routes = [
   {
     path: 'admin',
     component: AdminComponent
+  },
+  {
+    path: '404',
+    component: ErrorComponent
+  },
+  {
+    path: '**', redirectTo: '/404'
   }
  ];
 

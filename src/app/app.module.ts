@@ -19,6 +19,7 @@ import { AddMlsPlayerComponent } from './add-mls-player/add-mls-player.component
 import { MlsService } from './mls.service';
 import { NewsComponent } from './news/news.component';
 import { MatchesComponent } from './matches/matches.component';
+import { ErrorComponent } from './error/error.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -37,7 +38,8 @@ export const firebaseConfig = {
     EditMemberComponent,
     AddMlsPlayerComponent,
     NewsComponent,
-    MatchesComponent
+    MatchesComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

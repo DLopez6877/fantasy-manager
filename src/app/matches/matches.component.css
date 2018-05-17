@@ -58,7 +58,6 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  min-width: 520px;
   height: 100px;
 }
 
@@ -91,4 +90,16 @@
   transform: translateX(-50%);
   bottom: 10px;
   width: 100%;
+}
+
+.squad-short {
+  display: none;
+}
+@media screen and (max-width: 550px) {
+  .squad-short {
+    display: block;
+  }
+  .squad-full {
+    display: none;
+  }
 }

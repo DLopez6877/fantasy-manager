@@ -30,12 +30,14 @@
     <div class="round" *ngFor='let match of roundToDisplay?.matches'>
         <span class="match-indicator in-progress" *ngIf="match.status === 'playing'">In Progress</span>
         <div class="home">
-          <span>{{ match.home_squad_name }}</span>
+          <span class="squad-full">{{ match.home_squad_name }}</span>
+          <span class="squad-short">{{ match.home_squad_short_name }}</span>
           <p class="score" *ngIf="match.status !== 'scheduled'">{{ match.home_score }}</p>
         </div>
         <div class="vs">VS</div>
         <div class="away">
-          <span>{{ match.away_squad_name }}</span>
+          <span class="squad-full">{{ match.away_squad_name }}</span>
+          <span class="squad-short">{{ match.away_squad_short_name }}</span>
           <p class="score" *ngIf="match.status !== 'scheduled'">{{ match.away_score }}</p>
         </div>
         <span class="stadium ">{{ match.venue_name }}</span>

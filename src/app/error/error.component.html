@@ -1,7 +1,9 @@
+<div class="error">404</div>
+<h1>AN ERROR HAS OCCURED</h1>
 <table>
   <tr *ngFor="let row of downosaur">
     <ng-container *ngFor="let cell of row" >
-      <td [ngClass]="cell ? 'fill' : ''"></td>
+      <td [ngClass]="cell ? 'fill' : ''">{{cell}}</td>
     </ng-container>
   </tr>
 </table>
